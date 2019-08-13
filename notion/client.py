@@ -67,6 +67,16 @@ class NotionClient(object):
         else:
             block_class = BLOCK_TYPES.get(block.get("type", ""), Block)
         return block_class(self, block_id)
+    
+    def get_comment(self, comment_id, force_refresh=False):
+        """
+        Retrieve an instance of a subclass of Comment that maps to the comment ID passed in.
+        """
+   
+        comment = self.get_record_data("comment", comment_id, force_refresh=force_refresh)
+        if not comment:
+            return None
+
 
     def get_collection(self, collection_id, force_refresh=False):
         """
