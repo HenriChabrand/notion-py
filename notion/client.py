@@ -74,8 +74,9 @@ class NotionClient(object):
         """
    
         comment = self.get_record_data("comment", comment_id, force_refresh=force_refresh)
-        if not comment:
-            return None
+    
+        print("COMMENT",comment)
+        return comment
 
 
     def get_collection(self, collection_id, force_refresh=False):
